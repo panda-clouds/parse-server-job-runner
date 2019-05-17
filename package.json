@@ -28,7 +28,8 @@
     "debug": "^2.6.8",
     "parse": "^1.9.2",
     "request": "^2.81.0",
-    "request-promise": "^4.2.1"
+    "request-promise": "^4.2.1",
+    "repeat": "^1.1.4"
   },
   "devDependencies": {
     "eslint": "^4.0.0",
