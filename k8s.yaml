@@ -1,0 +1,20 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: job-runner
+  namespace: <insert-namespace>
+spec:
+  containers:
+    - name: job-runner
+      image: pandaclouds/parse-server-job-runner
+      env:
+      - name: PARSE_APPLICATION_ID
+        value: <insert-app-id>
+      - name: PARSE_SERVER_URL
+        value: <insert-server-url>
+      - name: PARSE_MASTER_KEY
+        valueFrom:
+          secretKeyRef:
+            key: <insert-value-in-keychain-that-contains-masterkey>
+            name: <insert-keychain-that-contains-masterkey>
+  restartPolicy: Always
