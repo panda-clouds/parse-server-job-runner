@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const Parse = require('parse/node');
+const repeat = require("repeat");
 const { JobSchedule } = require('../lib/JobSchedule');
 
 if (!process.env.PARSE_APPLICATION_ID || !process.env.PARSE_MASTER_KEY || !process.env.PARSE_SERVER_URL) {
@@ -9,4 +10,7 @@ if (!process.env.PARSE_APPLICATION_ID || !process.env.PARSE_MASTER_KEY || !proce
 Parse.initialize(process.env.PARSE_APPLICATION_ID, process.env.PARSE_JAVASCRIPT_KEY, process.env.PARSE_MASTER_KEY);
 Parse.serverURL = process.env.PARSE_SERVER_URL;
 
-JobSchedule.run();
+
+repeat()
+  .do(() => JobSchedule.run())
+  .every(60 * 1000);
